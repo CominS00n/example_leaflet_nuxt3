@@ -2,7 +2,7 @@
   <v-card>
     <v-card-text>
       <helloView />
-      <NuxtLink :to="{ name: 'testView' }">
+      <NuxtLink :to="{ name: 'mapView' }">
         <button>Test View</button>
       </NuxtLink>
     </v-card-text>

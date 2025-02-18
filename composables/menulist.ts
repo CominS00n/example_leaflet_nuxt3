@@ -1,14 +1,14 @@
 export const menuItems = [
   {
-    icon: "mdi-folder",
-    title: "My Files",
-    value: "myfiles",
+    icon: "mdi-home",
+    title: "Home",
+    value: "home",
     name: "index",
   },
   {
-    icon: "mdi-account",
-    title: "Shared with me",
-    value: "shared",
-    name: "testView",
+    icon: "mdi-map",
+    title: "Map",
+    value: "map",
+    name: "mapView",
   },
 ];
