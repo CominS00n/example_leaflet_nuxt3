@@ -42,31 +42,6 @@ const center = ref<[number, number]>([13.7563309, 100.5017651]);
 const airQuality = new AirQuality();
 const res = ref<AirQualityResponse>();
 
-// create function to change color
-const changeColor = (aqi: number) => {
-  if (aqi < 50) {
-    return "bg-green-500";
-  } else if (aqi < 85) {
-    return "bg-yellow-500";
-  } else {
-    return "bg-red-500";
-  }
-};
-
-// create function to zoom location
-const zoomLocation = (location: [number, number]) => {
-  if (zoom.value === 10) {
-    zoom.value = 6;
-  }
-  setTimeout(() => {
-    center.value = location;
-  }, 300);
-
-  setTimeout(() => {
-    zoom.value = 10;
-  }, 500);
-};
-
 // call api when component mounted
 onMounted(async () => {
   await airQuality.getAirQuality().then((response: AirQualityResponse) => {
