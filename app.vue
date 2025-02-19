@@ -13,7 +13,11 @@
         <v-divider></v-divider>
 
         <v-list density="compact" nav>
-          <NuxtLink v-for="item in menu" :to="{name: item.name}" :key="item.title">
+          <NuxtLink
+            v-for="item in menu"
+            :to="{ name: item.name }"
+            :key="item.title"
+          >
             <v-list-item
               :prepend-icon="item.icon"
               :title="item.title"
@@ -39,7 +43,6 @@
           <v-icon>mdi-dots-vertical</v-icon>
         </v-btn>
       </v-app-bar>
-
       <v-container>
         <v-main>
           <NuxtPage />
@@ -50,7 +53,6 @@
 </template>
 
 <script setup lang="ts">
-
 const theme = useThemeStore();
 
 const isTheme = computed(() => theme.theme === "dark");

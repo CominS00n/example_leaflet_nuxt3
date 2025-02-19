@@ -9,6 +9,6 @@ export const menuItems = [
     icon: "mdi-map",
     title: "Map",
     value: "map",
-    name: "mapView",
+    name: "map",
   },
 ];
