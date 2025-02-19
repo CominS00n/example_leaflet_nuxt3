@@ -2,27 +2,26 @@
   <v-col>
     <div class="h-[480px] md:h-[640px]">
       <LMap ref="map" :zoom="zoom" :center="center" :use-global-leaflet="false">
+        <LControlLayers position="topright" />
         <LTileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&amp;copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
           layer-type="base"
           name="OpenStreetMap"
         />
-        <LMarker
-          v-for="item in res?.data"
-          :lat-lng="item.station.geo"
-          :key="item.uuid"
-          @click="zoomLocation(item.station.geo)"
-        >
-          <LIcon class-name="">
-            <span
-              class="text-white rounded-full px-2 py-1 hover:opacity-75"
-              :class="changeColor(Number(item.aqi))"
-            >
-              {{ item.aqi }}
-            </span>
-          </LIcon>
-        </LMarker>
+
+        <LTileLayer
+          name="real world"
+          url="https://stamen-tiles.a.ssl.fastly.net/toner/{z}/{x}/{y}.png"
+          layer-type="base"
+        />
+
+        <!-- ? Overlay layer for street map  -->
+        <LTileLayer
+          url="https://tiles.waqi.info/tiles/usepa-aqi/{z}/{x}/{y}.png?token=817f0d85bda78d97dc1f96024e5363cb2606eef1"
+          layer-type="overlay"
+          name="Air Quality"
+        />
       </LMap>
     </div>
   </v-col>
@@ -30,6 +29,7 @@
 
 <script setup lang="ts">
 // import AirQualityResponse Type
+import { LTileLayer } from "#components";
 import type { AirQualityResponse } from "../types/responseInterface";
 
 // create all variables
